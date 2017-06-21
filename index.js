@@ -4,7 +4,7 @@
  * Supported file types:
  *   .json
  */
-const dir = process.env.NODE_CONFIG_DIR || './config';
+const dir = process.env.NODE_CONFIG_DIR.trim() || './config';
 const type = process.env.NODE_CONFIG_TYPE || 'json';
 
 module.exports = new (require('./lib/BitConfig.js'))(dir, type).getConfig();
