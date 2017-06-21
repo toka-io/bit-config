@@ -1,6 +1,6 @@
 ## Bit, as simple as it gets.
 
-bit-config is a NodeJS application configuration library. The library with scan the configuration folder for valid configuration files (files the a valid extension i.e. 'json')  and load them into the config object. Configuration properties can be accessed using dot notation (i.e. 'a.dot.notation').
+bit-config is a NodeJS application configuration library. The library will scan the configuration directory for valid configuration files (files with a valid extension i.e. 'json') and load them into the configuration instance. Configuration properties can be accessed using dot notation (i.e. 'a.dot.notation').
 
 Configuration file types supported:
 * json
