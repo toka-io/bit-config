@@ -12,7 +12,7 @@ npm install toka-io/bit-config --save
 
 ### Configuration Parameters
 ```
-NODE_CONFIG_DIR   # Configuration directory, defaults to './config'
+NODE_CONFIG_DIR   # Configuration directory, defaults to './configuration'
 NODE_CONFIG_TYPE  # Configuration file type, defaults to 'json'
 ```
 
