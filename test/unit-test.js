@@ -1,7 +1,9 @@
 process.env['NODE_CONFIG_DIR'] = './configuration';
 
-const expect = require('chai').expect;
+const assert  = require('assert');
 const config = require('../index.js');
+const expect = require('chai').expect;
+const sinon  = require('sinon');
 
 /**
  * Test BitConfig methods
@@ -13,7 +15,13 @@ describe('BitConfig', () => {
   });
   
   it('get(property) - Throw error when trying to get a property that does not exist', () => {
-    expect(() => config.get('waifu')).to.throw('Property not found. Please make sure the property exists in your config file.');
+    let spy = sinon.spy(console, 'warn');
+   
+    const property = 'ryujin.no.ken.wo.kurae';
+    config.get(property);
+    
+    // assert that it was called with the correct value
+    assert(spy.calledWith(`Property '${property}' not found. Please make sure the property exists in your config file.`));
   });
   
   it('get(null) - Throw error when trying to get null property', () => {
@@ -24,7 +32,7 @@ describe('BitConfig', () => {
     expect(() => config.get()).to.throw('Property cannot be undefined or null');
   });
   
-  it('require(module) - Throw error if configuration directory does not exist', () => {
+  it('require(module) - Print warning if configuration directory does not exist', () => {
     // Reset cache to rebuild config with non-existent file directory
     process.env['NODE_CONFIG_DIR'] = './build/configuration';
     delete require.cache[require.resolve('../index.js')];
